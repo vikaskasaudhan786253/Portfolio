@@ -1,49 +1,187 @@
-import React ,{useRef, useState} from 'react'
-import './Navbar.css'
-import logo from '../../assets/logo.svg'
-import underline from '../../assets/nav_underline.svg'
-import menu_open from '../../assets/menu_open.svg'
-import menu_close from '../../assets/menu_close.svg'
+import { useRef, useState } from "react";
 
-const Navbar = () => {
+import menu_open from "../../assets/menu_open.svg";
+import menu_close from "../../assets/menu_close.svg";
 
-    const [menu,setMenu] = useState("home");
+import "./Navbar.css";
+
+function Navbar() {
+
+
+    const [menu, setMenu] = useState("home");
 
     const menuRef = useRef();
 
     const openMenu = () => {
         menuRef.current.style.right = "0";
-    }
+    };
+
     const closeMenu = () => {
         menuRef.current.style.right = "-350px";
-    }
+    };
 
-  return (
-    <div className='navbar'>
+    const handleMenuClick = (section) => {
+        setMenu(section);
+        closeMenu();
+    };
 
-        <img src={logo} alt=""/>
 
-        <img src={menu_open} onClick={openMenu} alt="" className="nav-mob-open" />
+    return (
 
-        <ul ref={menuRef} className="nav-menu">
+        <nav className="navbar">
 
-            <img src={menu_close} onClick={closeMenu} alt="" className="nav-mob-close" />
+            {/* =========================
+                LOGO
+            ========================= */}
 
-            <li><a className='anchor-link' href='#home'><p onClick={()=>setMenu("home")}>Home</p></a>{menu==="home"?<img src={underline} alt=''/>:<></>}</li>
+            <div className="name-logo">
 
-            <li><a className='anchor-link' offset={50} href='#about'><p onClick={()=>setMenu("about")}>About Me</p></a>{menu==="about"?<img src={underline} alt=''/>:<></>}</li>
+                <a
+                    href="#home"
+                    className="logo-name"
+                    onClick={() => handleMenuClick("home")}
+                >
+                    &lt;Vikas /&gt;
+                </a>
 
-            <li><a className='anchor-link' offset={50} href='#services'><p onClick={()=>setMenu("services")}>Services</p></a>{menu==="services"?<img src={underline} alt=''/>:<></>}</li>
+            </div>
 
-            <li><a className='anchor-link' offset={50} href='#work'><p onClick={()=>setMenu("work")}>Portfolio</p></a>{menu==="work"?<img src={underline} alt=''/>:<></>}</li>
-            
-            <li><a className='anchor-link' offset={50} href='#contact'><p onClick={()=>setMenu("contact")}>Contact</p></a>{menu==="contact"?<img src={underline} alt=''/>:<></>}</li>
-        </ul>
 
-        <div className="nav-connect"><a className='anchor-link' offset={50} href='#contact'>Connect With Me</a></div>
+            {/* =========================
+                MOBILE OPEN BUTTON
+            ========================= */}
 
-    </div>
-  )
+            <img
+                src={menu_open}
+                onClick={openMenu}
+                alt="Open menu"
+                className="nav-mob-open"
+            />
+
+
+            {/* =========================
+                NAVIGATION MENU
+            ========================= */}
+
+            <ul
+                ref={menuRef}
+                className="nav-menu"
+            >
+
+                {/* Mobile close button */}
+
+                <img
+                    src={menu_close}
+                    onClick={closeMenu}
+                    alt="Close menu"
+                    className="nav-mob-close"
+                />
+
+
+                <li>
+                    <a
+                        href="#about"
+                        className={menu === "about" ? "active" : ""}
+                        onClick={() => handleMenuClick("about")}
+                    >
+                        About
+                    </a>
+                </li>
+
+
+                <li>
+                    <a
+                        href="#skills"
+                        className={menu === "skills" ? "active" : ""}
+                        onClick={() => handleMenuClick("skills")}
+                    >
+                        Skills
+                    </a>
+                </li>
+
+
+                <li>
+                    <a
+                        href="#projects"
+                        className={menu === "projects" ? "active" : ""}
+                        onClick={() => handleMenuClick("projects")}
+                    >
+                        Projects
+                    </a>
+                </li>
+
+
+                <li>
+                    <a
+                        href="#journey"
+                        className={menu === "journey" ? "active" : ""}
+                        onClick={() => handleMenuClick("journey")}
+                    >
+                        Journey
+                    </a>
+                </li>
+
+
+                <li>
+                    <a
+                        href="#dsa"
+                        className={menu === "dsa" ? "active" : ""}
+                        onClick={() => handleMenuClick("dsa")}
+                    >
+                        DSA
+                    </a>
+                </li>
+
+
+                <li>
+                    <a
+                        href="#experience"
+                        className={menu === "experience" ? "active" : ""}
+                        onClick={() => handleMenuClick("experience")}
+                    >
+                        Experience
+                    </a>
+                </li>
+
+
+                <li>
+                    <a
+                        href="#github"
+                        className={menu === "github" ? "active" : ""}
+                        onClick={() => handleMenuClick("github")}
+                    >
+                        GitHub
+                    </a>
+                </li>
+
+
+                <li>
+                    <a
+                        href="#contact"
+                        className={menu === "contact" ? "active" : ""}
+                        onClick={() => handleMenuClick("contact")}
+                    >
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+
+
+            {/* =========================
+                HIRE ME BUTTON
+            ========================= */}
+
+            <div className="nav-connect">
+
+                <a href="#contact">
+                    Hire Me
+                </a>
+
+            </div>
+
+        </nav>
+    );
 }
 
-export default Navbar
+export default Navbar;
