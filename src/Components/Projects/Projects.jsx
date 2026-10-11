@@ -1,6 +1,6 @@
 import "./Projects.css";
 
-import debtbook_img from "../../assets/debtbook.png";
+import digital_calculator from "../../assets/digital_calculator.avif";
 import heart_img from "../../assets/heart-disease.png";
 import student_img from "../../assets/student-performance.png";
 import house_img from "../../assets/house-price.png";
@@ -11,14 +11,14 @@ function Projects() {
 
     const projects = [
         {
-            title: "Digital Debt Book",
-            image: debtbook_img,
+            title: "Digital Calculator",
+            image: digital_calculator,
             description:
-                "Full-stack debt management system with Flask + MongoDB backend, React frontend, real-time analytics and calculator-powered insights.",
-            technologies: ["React", "Flask", "MongoDB", "Recharts"],
+                "The project is designed to behave like a modern Casio-style scientific calculator. using react + vite and python + flask",
+            technologies: ["React","Vite", "Flask", "Python"],
             featured: true,
-            github: "#",
-            live: "#",
+            github: "https://github.com/vikaskasaudhan786253/Calculator",
+            live: "https://calculator-nine-beta-16.vercel.app/",
         },
 
         {
